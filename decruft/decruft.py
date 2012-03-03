@@ -234,7 +234,7 @@ class Document:
             if REGEXES['unlikelyCandidatesRe'].search(s) and (not REGEXES['okMaybeItsACandidateRe'].search(s)) and elem.tag != 'body':
                 self.debug("Removing unlikely candidate - %s" % (s,))
                 remove_list.append(elem)
-        [e.drop_tree() for e in remove_list]
+        [e.drop_tree() for e in remove_list if e.tag != 'html']
 
 
 
